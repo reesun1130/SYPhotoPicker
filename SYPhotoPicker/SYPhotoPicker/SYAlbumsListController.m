@@ -202,16 +202,19 @@
         
         if (fetchResult && fetchResult.count > 0) {
             //取最新的一张图片
-            PHAsset *asset = fetchResult[fetchResult.count - indexPath.row - 1];
-            CGFloat width = [UIScreen mainScreen].scale * 50;
+            PHAsset *asset = [fetchResult lastObject];
             
-            [self.imageManager requestImageForAsset:asset
-                                         targetSize:CGSizeMake(width, width)
-                                        contentMode:PHImageContentModeAspectFill
-                                            options:nil
-                                      resultHandler:^(UIImage *result, NSDictionary *info) {
-                                          cell.imageView.image = result;
-                                      }];
+            if (asset) {
+                CGFloat width = [UIScreen mainScreen].scale * 50;
+                
+                [self.imageManager requestImageForAsset:asset
+                                             targetSize:CGSizeMake(width, width)
+                                            contentMode:PHImageContentModeAspectFill
+                                                options:nil
+                                          resultHandler:^(UIImage *result, NSDictionary *info) {
+                                              cell.imageView.image = result;
+                                          }];
+            }
         }
     }
     else {
