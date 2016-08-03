@@ -9,10 +9,9 @@
 # SYPhotoPicker
 SYPhotoPicker photo photoPicker 相册读取及展示demo，适配iOS8，详情请看demo
 
-#使用
-实现SYPhotoPickerDelegate代理
-     SYAlbumsListController *vcPhoto = [[SYAlbumsListController alloc] initWithDelegate:self];
-     [self presentViewController:vcPhoto animated:YES completion:nil];
+#使用 实现SYPhotoPickerDelegate代理
+      SYAlbumsListController *vcPhoto = [[SYAlbumsListController alloc] initWithDelegate:self];
+      [self presentViewController:vcPhoto animated:YES completion:nil];
 
 #代理
     - (void)photoPickerController:(SYPhotoPickerController *)picker didFinishPickingPhotos:(NSArray *)photos {
