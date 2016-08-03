@@ -19,8 +19,9 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        _imageView.backgroundColor = [UIColor redColor];
+        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _imageView.clipsToBounds = YES;
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:_imageView];
         
         _button = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -11,7 +11,6 @@
 @interface SYPhotoCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImage *thumbnailImage;
-@property (nonatomic, copy) NSString *representedAssetIdentifier;
 
 - (void)setChecked:(BOOL)flag;
 

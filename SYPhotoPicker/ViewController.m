@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "SYAlbumsListController.h"
 
-@interface ViewController () <SYAlbumsListDelegate>
+@interface ViewController () <SYPhotoPickerDelegate>
 
 @end
 
@@ -26,20 +26,22 @@
 }
 
 - (IBAction)onClickBtnAlbum:(id)sender {
-    SYAlbumsListController *vcPhoto = [[SYAlbumsListController alloc] init];
-    vcPhoto.delegate = self;
+    SYAlbumsListController *vcPhoto = [[SYAlbumsListController alloc] initWithDelegate:self];
     [self presentViewController:vcPhoto animated:YES completion:nil];
 }
 
-#pragma mark - SYAlbumsListDelegate
+#pragma mark - SYPhotoPickerControllerDelegate
 
-- (void)albumsListController:(SYAlbumsListController *)picker didFinishPickingPhotos:(NSArray *)photos {
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"didFinishPickingPhotos==%@",photos);
+- (void)photoPickerController:(SYPhotoPickerController *)picker didFinishPickingPhotos:(NSArray *)photos {
+    NSLog(@"selectedphotos==%@",photos);
 }
 
-- (void)albumsListControllerDidCancel:(SYAlbumsListController *)picker {
-    NSLog(@"albumsListControllerDidCancel");
+- (void)photoPickerController:(SYPhotoPickerController *)picker didSelectPhoto:(SYAsset *)photo {
+    NSLog(@"selectedphoto==%@",photo);
+}
+
+- (void)photoPickerController:(SYPhotoPickerController *)picker didSelectPhotoAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"selectedindexpath==%@",indexPath);
 }
 
 @end

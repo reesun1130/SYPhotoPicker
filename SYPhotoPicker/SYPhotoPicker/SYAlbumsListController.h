@@ -7,22 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYPhotoPickerDelegate.h"
 
-@class SYAlbumsListController;
-@protocol SYAlbumsListDelegate <NSObject>
+@interface SYAlbumsListController : UINavigationController
 
-@required
-
-- (void)albumsListController:(SYAlbumsListController *)picker didFinishPickingPhotos:(NSArray *)photos;
-
-@optional
-
-- (void)albumsListControllerDidCancel:(SYAlbumsListController *)picker;
+- (instancetype)initWithDelegate:(id<SYPhotoPickerDelegate>)pickerDelegate;
 
 @end
 
-@interface SYAlbumsListController : UIViewController
+@interface SYAlbumListController : UIViewController
 
-@property (nonatomic, weak) id<SYAlbumsListDelegate>delegate;
+- (instancetype)initWithDelegate:(id<SYPhotoPickerDelegate>)pickerDelegate;
 
 @end
