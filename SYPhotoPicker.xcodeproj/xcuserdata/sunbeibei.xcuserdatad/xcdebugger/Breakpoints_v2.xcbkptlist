@@ -17,6 +17,38 @@
             endingLineNumber = "225"
             landmarkName = "-photoLibraryDidChange:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[SYAlbumListController photoLibraryDidChange:]_block_invoke"
+                  moduleName = "SYPhotoPicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sunbeibei/Desktop/demo/SYPhotoPicker-Master/SYPhotoPicker/SYPhotoPicker/SYAlbumsListController.m"
+                  timestampString = "492328296.008693"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[SYAlbumListController photoLibraryDidChange:]_block_invoke_2"
+                  moduleName = "SYPhotoPicker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sunbeibei/Desktop/demo/SYPhotoPicker-Master/SYPhotoPicker/SYPhotoPicker/SYAlbumsListController.m"
+                  timestampString = "492328296.00987"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "225"
+                  endingLineNumber = "225"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -80,6 +112,22 @@
             startingLineNumber = "230"
             endingLineNumber = "230"
             landmarkName = "-photoLibraryDidChange:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SYPhotoPicker/SYPhotoPicker/SYAlbumsHelper.m"
+            timestampString = "492328295.979737"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "+fetchAlbums:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

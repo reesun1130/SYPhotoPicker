@@ -175,7 +175,7 @@ static SYAlbumsHelper *albumsHelper = nil;
             if (!group) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (completion) {
-                        completion(_arrAlbums, NO);
+                        completion(_arrAlbums, YES);
                     }
                 });
                 *stop = YES;
@@ -189,19 +189,13 @@ static SYAlbumsHelper *albumsHelper = nil;
                                                                   name:sGroupPropertyName.lowercaseString
                                                             assetCount:[group numberOfAssets]];
                 
-                if (([mAlbum.name isEqualToString:@"Camera Roll"] || [mAlbum.name isEqualToString:@"相机胶卷"]) && nType == ALAssetsGroupSavedPhotos) {
+                if (([mAlbum.name isEqualToString:@"Camera Roll"] || [mAlbum.name isEqualToString:@"相机胶卷"] || [mAlbum.name isEqualToString:@"所有照片"]) && nType == ALAssetsGroupSavedPhotos) {
                     [_arrAlbums insertObject:mAlbum atIndex:0];
                 }
                 else {
                     [_arrAlbums addObject:mAlbum];
                 }
             }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (completion) {
-                    completion(_arrAlbums, YES);
-                }
-            });
         };
         
         void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
@@ -236,7 +230,7 @@ static SYAlbumsHelper *albumsHelper = nil;
                                                           name:collection.localizedTitle
                                                     assetCount:[fetchResult count]];
         
-        if ([collection.localizedTitle isEqualToString:@"Camera Roll"]) {
+        if ([mAlbum.name isEqualToString:@"Camera Roll"] || [mAlbum.name isEqualToString:@"相机胶卷"] || [mAlbum.name isEqualToString:@"所有照片"]) {
             [resultArr insertObject:mAlbum atIndex:0];
         }
         else {
