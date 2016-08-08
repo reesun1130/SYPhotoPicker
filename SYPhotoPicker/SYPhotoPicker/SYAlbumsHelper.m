@@ -171,17 +171,17 @@ static SYAlbumsHelper *albumsHelper = nil;
     else {
         ALAssetsLibrary *_library = [[ALAssetsLibrary alloc] init];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
-                if (!group) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (completion) {
-                            completion(_arrAlbums, NO);
-                        }
-                    });
-                    return;
-                }
-                
+        void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
+            if (!group) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (completion) {
+                        completion(_arrAlbums, NO);
+                    }
+                });
+                *stop = YES;
+            }
+            
+            if ([group numberOfAssets] > 0) {
                 NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
                 NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
                 
@@ -195,25 +195,26 @@ static SYAlbumsHelper *albumsHelper = nil;
                 else {
                     [_arrAlbums addObject:mAlbum];
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (completion) {
-                        completion(_arrAlbums, YES);
-                    }
-                });
-            };
+            }
             
-            void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (completion) {
-                        completion(_arrAlbums, NO);
-                    }
-                });
-            };
-            
-            [_library enumerateGroupsWithTypes:ALAssetsGroupAll
-                                    usingBlock:assetGroupEnumerator
-                                  failureBlock:assetGroupEnumberatorFailure];
-        });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) {
+                    completion(_arrAlbums, YES);
+                }
+            });
+        };
+        
+        void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (completion) {
+                    completion(_arrAlbums, NO);
+                }
+            });
+        };
+        
+        [_library enumerateGroupsWithTypes:ALAssetsGroupAll
+                                usingBlock:assetGroupEnumerator
+                              failureBlock:assetGroupEnumberatorFailure];
     }
 }
 
