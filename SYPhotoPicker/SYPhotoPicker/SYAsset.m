@@ -90,7 +90,7 @@
 - (BOOL)isInCloud {
     __block BOOL isCloudImage = NO;
     
-    [[SYAlbumsHelper sharedHelper] fetchImageWithAsset:self targetSize:kPreviewTargetSize completion:^(UIImage *_Nullable image, NSDictionary *_Nullable info) {
+    [[SYAlbumsHelper sharedHelper] fetchImageWithAsset:self targetSize:kOriginTargetSize completion:^(UIImage *_Nullable image, NSDictionary *_Nullable info) {
         if (info) {
             id isIcloud = [info objectForKey:PHImageResultIsInCloudKey];
             if (isIcloud && [isIcloud boolValue]) {
